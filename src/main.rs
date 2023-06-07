@@ -1,4 +1,4 @@
 fn main() {
-	coolio::init_debug_tools();
+	{{crate-name}}::init_debug_tools();
 	println!("Hello, world!");
 }
