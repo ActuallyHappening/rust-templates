@@ -1,4 +1,4 @@
 fn main() {
-	{{crate-name}}::init_debug_tools();
+	{{crate_name}}::init_debug_tools();
 	println!("Hello, world!");
 }
