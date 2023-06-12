@@ -2,7 +2,7 @@ use bevy::prelude::*;
 use tracing::{debug, info};
 
 fn main() {
-	{{crate_name}}::init_debug_tools();
+	bevy_app::init_debug_tools();
 
 	info!("Bevy app running ...");
 
