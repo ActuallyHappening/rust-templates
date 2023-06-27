@@ -1,18 +1,9 @@
 use bevy::prelude::*;
-use tracing::{debug, info};
+use duck_man::MainPlugin;
 
 fn main() {
-	bevy_app::init_debug_tools();
-
-	info!("Bevy app running ...");
-
 	App::new()
-		// startup systems
-		.add_startup_system(hello_world)
-		// plugins	
-		.add_plugins(DefaultPlugins)
-		// run
-		.run();
-
-	debug!("Bevy app finished.");
+    .add_plugins(DefaultPlugins)
+    .add_plugins(MainPlugin)
+    .run();
 }
