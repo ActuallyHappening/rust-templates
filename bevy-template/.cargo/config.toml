@@ -2,6 +2,7 @@
 bw = "b --target wasm32-unknown-unknown"
 cw = "c --target wasm32-unknown-unknown"
 r = "run -F dev"
+w = "watch -q -c -w src/ -x 'r'"
 
 # Add the contents of this file to `config.toml` to enable "fast build" configuration. Please read the notes below.
 
