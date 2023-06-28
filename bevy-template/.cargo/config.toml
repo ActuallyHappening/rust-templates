@@ -1,0 +1,41 @@
+[alias]
+bw = "b --target wasm32-unknown-unknown"
+cw = "c --target wasm32-unknown-unknown"
+r = "run -F dev"
+w = "watch -q -c -w src/ -x 'r'"
+bwindows = "b --target x86_64-pc-windows-gnu"
+
+# Add the contents of this file to `config.toml` to enable "fast build" configuration. Please read the notes below.
+
+# NOTE: For maximum performance, build using a nightly compiler
+# If you are using rust stable, remove the "-Zshare-generics=y" below.
+
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+rustflags = ["-Clink-arg=-fuse-ld=lld", "-Zshare-generics=y"]
+
+[target.x86_64-apple-darwin]
+rustflags = [
+	# "-C",
+	# "link-arg=-fuse-ld=/usr/local/opt/llvm/bin/ld64.lld",
+	"-Zshare-generics=y",
+]
+
+[target.aarch64-apple-darwin]
+rustflags = [
+	"-C",
+	"link-arg=-fuse-ld=/opt/homebrew/opt/llvm/bin/ld64.lld",
+	"-Zshare-generics=y",
+	"-C",
+	"target-cpu=apple-m2",
+]
+
+[target.x86_64-pc-windows-gnu]
+# linker = "rust-lld.exe"
+linker = "x86_64-w64-mingw32-gcc"
+rustflags = ["-Zshare-generics=n"]
+
+# Optional: Uncommenting the following improves compile times, but reduces the amount of debug info to 'line number tables only'
+# In most cases the gains are negligible, but if you are on macos and have slow compile times you should see significant gains.
+# [profile.dev]
+# debug = 1

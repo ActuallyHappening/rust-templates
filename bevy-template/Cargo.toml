@@ -13,6 +13,11 @@ opt-level = 1
 [profile.dev.package."*"]
 opt-level = 3
 
+[profile.release]
+# opt-level = 3
+# lto = true
+# codegen-units = 1
+
 [dependencies]
 bevy_editor_pls = "0.4.0"
 bevy_egui = "0.20.3"
