@@ -17,8 +17,9 @@ opt-level = 3
 bevy_editor_pls = "0.4.0"
 bevy_egui = "0.20.3"
 bevy_fly_camera = "0.10.0"
-bevy_mod_picking = "0.13.0"
+bevy_mod_picking = { version = "0.13.0", features = ["backend_rapier"] }
 bevy_rapier3d = { version = "0.21.0", features = ["debug-render-3d", "simd-nightly"] }
+rand = "0.8.5"
 serde = { version = "1.0.163", features = ["derive"] }
 tracing = "0.1.37"
 tracing-subscriber = { version = "0.3.17", features = ["time"] }
