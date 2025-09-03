@@ -1,7 +1,10 @@
-pub fn init_debug_tools(filter: &str) {
+pub fn init_debug_tools(filter: &str) -> color_eyre::Result<()> {
 	#[cfg(not(target_arch = "wasm32"))]
 	{
+		use tracing_error::ErrorLayer;
 		use tracing_subscriber::fmt::{self};
+		use tracing_subscriber::layer::SubscriberExt as _;
+		use tracing_subscriber::util::SubscriberInitExt as _;
 		use tracing_subscriber::EnvFilter;
 		let fmt_layer = fmt::Layer::default().with_target(true);
 		let filter_layer = EnvFilter::try_from_default_env()
@@ -15,6 +18,7 @@ pub fn init_debug_tools(filter: &str) {
 			.init();
 
 		color_eyre::install()?;
+		Ok(())
 	}
 
 	#[cfg(target_arch = "wasm32")]
@@ -26,5 +30,6 @@ pub fn init_debug_tools(filter: &str) {
 				tracing_wasm::WASMLayerConfig::default(),
 			))
 			.init();
+		Ok(())
 	}
 }
